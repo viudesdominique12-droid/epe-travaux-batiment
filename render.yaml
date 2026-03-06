@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: epe-travaux-batiment
+    runtime: static
+    buildCommand: echo "Static site"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: true
