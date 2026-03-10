@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteBase /
+
+# Don't rewrite if already pointing to dist/
+RewriteCond %{REQUEST_URI} !^/dist/
+
+# Rewrite everything to dist/
+RewriteRule ^(.*)$ dist/$1 [L]
