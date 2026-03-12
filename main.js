@@ -1,5 +1,5 @@
 /* ========================================
-   E.P.E Couverture — Main JS
+   E.P.E Peinture — Main JS
    ======================================== */
 
 import { initHero3D } from './hero-3d.js';
@@ -227,14 +227,10 @@ if (lightbox) {
 
 // --- Service detail modal ---
 const serviceDetails = {
-  couverture: ['Pose de couverture neuve', 'Rénovation de toiture existante', 'Réparation de fuites et infiltrations', 'Remplacement de tuiles cassées ou endommagées', 'Pose de velux et fenêtres de toit', 'Zinguerie et éléments d\'étanchéité'],
-  charpente: ['Traitement préventif et curatif du bois', 'Entretien et renforcement de charpente', 'Consolidation de structures fragilisées', 'Remplacement de pièces de bois', 'Isolation sous toiture'],
-  ravalement: ['Nettoyage haute pression des façades', 'Réparation des fissures et enduit', 'Application d\'enduit de finition', 'Imperméabilisation des murs extérieurs', 'Protection contre les intempéries'],
-  peinture: ['Peinture murs extérieurs', 'Finitions esthétiques résistantes', 'Choix de couleurs et conseils', 'Application de sous-couche et finition', 'Protection UV et intempéries'],
-  nettoyage: ['Démoussage de toiture', 'Nettoyage haute pression', 'Élimination des lichens et salissures', 'Nettoyage de gouttières', 'Traitement anti-mousse préventif'],
-  hydrofuge: ['Diagnostic d\'humidité', 'Application de produits hydrofuges', 'Protection contre les infiltrations', 'Traitement des murs et toitures', 'Conseils prévention humidité'],
-  gouttieres: ['Installation de gouttières neuves', 'Remplacement de gouttières usagées', 'Réparation de fuites', 'Nettoyage et entretien', 'Descentes d\'eau pluviale'],
-  urgence: ['Intervention rapide', 'Bâchage d\'urgence', 'Réparation temporaire de fuites', 'Sécurisation de toiture endommagée', 'Devis d\'urgence gratuit']
+  'peinture-murs': ['Peinture de murs intérieurs', 'Choix de couleurs et conseils personnalisés', 'Application de sous-couche adaptée', 'Finitions mates, satinées ou brillantes', 'Murs accent et décoration'],
+  'peinture-plafonds': ['Remise à neuf de plafonds', 'Préparation et enduit de lissage', 'Ponçage soigné avant peinture', 'Peinture blanche ou colorée', 'Rendu uniforme et lumineux'],
+  'peinture-boiseries': ['Peinture de portes intérieures', 'Laquage de plinthes et encadrements', 'Traitement et peinture de boiseries', 'Finition lisse et durable', 'Ponçage et préparation du bois'],
+  'peinture-preparation': ['Rebouchage de trous et fissures', 'Ponçage des surfaces', 'Enduit de lissage', 'Préparation des supports', 'Mise en apprêt avant peinture']
 };
 
 const serviceModal = document.getElementById('serviceModal');

@@ -1,5 +1,5 @@
 /* ========================================
-   E.P.E Couverture — Premium Styles
+   E.P.E Peinture — Premium Styles
    ======================================== */
 
 /* --- Reset & Variables --- */
@@ -370,56 +370,6 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
 .hero__trust span svg {
   color: var(--accent);
   flex-shrink: 0;
-}
-
-/* ========================================
-   URGENCE TOITURE BANNER
-   ======================================== */
-.urgence {
-  background: var(--gradient-accent);
-  padding: 20px 0;
-  color: var(--white);
-}
-.urgence__inner {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.urgence__icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,.2);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.urgence__text h3 {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-.urgence__text p {
-  font-size: .88rem;
-  opacity: .9;
-}
-.urgence__btn {
-  background: var(--white) !important;
-  color: var(--accent) !important;
-  font-weight: 700;
-  padding: 10px 24px;
-  border-radius: var(--radius);
-  font-size: .95rem;
-  transition: var(--transition);
-  white-space: nowrap;
-}
-.urgence__btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,.15);
 }
 
 /* ========================================
@@ -1818,14 +1768,25 @@ a.review-card:hover .review-card__google {
     grid-template-columns: 1fr 1fr;
     gap: 6px;
   }
-  .review-card { padding: 14px; min-height: auto; }
+  .reviews__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .reviews__grid::-webkit-scrollbar { display: none; }
+  .review-card {
+    padding: 14px;
+    min-height: auto;
+    min-width: 260px;
+    flex: 0 0 75%;
+    scroll-snap-align: start;
+  }
   .review-card__text { font-size: .8rem; margin-bottom: 6px; line-height: 1.4; }
   .review-card__stars { margin-bottom: 4px; }
   .review-card__author { font-size: .78rem; }
-  .reviews__grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
   .trust {
     padding: 16px 0;
   }
