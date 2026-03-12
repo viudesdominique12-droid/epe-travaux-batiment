@@ -180,25 +180,52 @@ if (carousel) {
   startAuto();
 }
 
-// --- Accordion (Detail prestations) ---
-document.querySelectorAll('.accordion-item__header').forEach(header => {
-  header.addEventListener('click', () => {
-    const item = header.parentElement;
-    const body = item.querySelector('.accordion-item__body');
-    const isOpen = item.classList.contains('open');
+// --- Service detail modal ---
+const serviceDetails = {
+  couverture: ['Pose de couverture neuve', 'Rénovation de toiture existante', 'Réparation de fuites et infiltrations', 'Remplacement de tuiles cassées ou endommagées', 'Pose de velux et fenêtres de toit', 'Zinguerie et éléments d\'étanchéité'],
+  charpente: ['Traitement préventif et curatif du bois', 'Entretien et renforcement de charpente', 'Consolidation de structures fragilisées', 'Remplacement de pièces de bois', 'Isolation sous toiture'],
+  ravalement: ['Nettoyage haute pression des façades', 'Réparation des fissures et enduit', 'Application d\'enduit de finition', 'Imperméabilisation des murs extérieurs', 'Protection contre les intempéries'],
+  peinture: ['Peinture murs extérieurs', 'Finitions esthétiques résistantes', 'Choix de couleurs et conseils', 'Application de sous-couche et finition', 'Protection UV et intempéries'],
+  nettoyage: ['Démoussage de toiture', 'Nettoyage haute pression', 'Élimination des lichens et salissures', 'Nettoyage de gouttières', 'Traitement anti-mousse préventif'],
+  hydrofuge: ['Diagnostic d\'humidité', 'Application de produits hydrofuges', 'Protection contre les infiltrations', 'Traitement des murs et toitures', 'Conseils prévention humidité'],
+  gouttieres: ['Installation de gouttières neuves', 'Remplacement de gouttières usagées', 'Réparation de fuites', 'Nettoyage et entretien', 'Descentes d\'eau pluviale'],
+  urgence: ['Intervention rapide', 'Bâchage d\'urgence', 'Réparation temporaire de fuites', 'Sécurisation de toiture endommagée', 'Devis d\'urgence gratuit']
+};
 
-    // Close all
-    document.querySelectorAll('.accordion-item').forEach(acc => {
-      acc.classList.remove('open');
-      acc.querySelector('.accordion-item__body').style.maxHeight = null;
-    });
+const serviceModal = document.getElementById('serviceModal');
+const modalIcon = serviceModal.querySelector('.service-modal__icon');
+const modalTitle = serviceModal.querySelector('.service-modal__title');
+const modalDesc = serviceModal.querySelector('.service-modal__desc');
+const modalList = serviceModal.querySelector('.service-modal__list');
 
-    // Open clicked if was closed
-    if (!isOpen) {
-      item.classList.add('open');
-      body.style.maxHeight = body.scrollHeight + 'px';
-    }
-  });
+function openServiceModal(card) {
+  const key = card.dataset.service;
+  const details = serviceDetails[key];
+  if (!details) return;
+
+  modalIcon.innerHTML = card.querySelector('.service-card__icon').innerHTML;
+  modalTitle.textContent = card.querySelector('h3').textContent;
+  modalDesc.textContent = card.querySelector('p').textContent;
+  modalList.innerHTML = details.map(item => `<li>${item}</li>`).join('');
+
+  serviceModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeServiceModal() {
+  serviceModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.service-card[data-service]').forEach(card => {
+  card.addEventListener('click', () => openServiceModal(card));
+});
+
+serviceModal.querySelector('.service-modal__overlay').addEventListener('click', closeServiceModal);
+serviceModal.querySelector('.service-modal__close').addEventListener('click', closeServiceModal);
+serviceModal.querySelector('.service-modal__cta').addEventListener('click', closeServiceModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && serviceModal.classList.contains('open')) closeServiceModal();
 });
 
 // --- FAQ accordion ---

@@ -982,80 +982,140 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
 }
 
 /* ========================================
-   DETAIL PRESTATIONS
+   SERVICE DETAIL MODAL
    ======================================== */
-.detail {
-  padding: 100px 0;
-  background: var(--sand);
-}
-.detail__accordion {
-  max-width: 800px;
-  margin: 0 auto;
+.service-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
 }
-.accordion-item {
+.service-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+.service-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.service-modal__content {
+  position: relative;
+  z-index: 1;
   background: var(--white);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+  border-radius: var(--radius);
+  padding: 40px 36px 32px;
+  max-width: 480px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
+  transform: perspective(800px) rotateX(15deg) scale(.85) translateY(40px);
+  opacity: 0;
+  transition: transform .5s var(--spring), opacity .35s ease;
 }
-.accordion-item:hover {
-  box-shadow: var(--shadow-lg);
+.service-modal.open .service-modal__content {
+  transform: perspective(800px) rotateX(0) scale(1) translateY(0);
+  opacity: 1;
 }
-.accordion-item__header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 24px;
-  font-size: 1rem;
-  font-weight: 600;
+.service-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--sand);
   color: var(--charcoal);
-  transition: var(--transition);
-}
-.accordion-item__header > span:first-child {
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  transition: var(--transition);
+  line-height: 1;
 }
-.accordion-item__header > span:first-child svg {
-  color: var(--primary);
+.service-modal__close:hover {
+  background: var(--primary);
+  color: var(--white);
 }
-.accordion-item__header:hover {
-  color: var(--primary);
-}
-.accordion-item__arrow {
-  transition: transform var(--spring);
+.service-modal__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--primary), #3a6f85);
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+.service-modal__icon svg {
+  width: 28px;
+  height: 28px;
+}
+.service-modal__title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
   color: var(--primary);
+  margin-bottom: 8px;
 }
-.accordion-item.open .accordion-item__arrow {
-  transform: rotate(180deg);
+.service-modal__desc {
+  font-size: .92rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
-.accordion-item__body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .4s ease;
+.service-modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
 }
-.accordion-item__body ul {
-  padding: 0 24px 20px;
-}
-.accordion-item__body li {
-  padding: 6px 0;
+.service-modal__list li {
+  padding: 10px 0;
   font-size: .9rem;
   color: #555;
   border-bottom: 1px solid var(--sand);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.accordion-item__body li:last-child {
+.service-modal__list li:last-child {
   border-bottom: none;
 }
-.accordion-item__body li::before {
-  content: '→ ';
-  color: var(--accent);
-  font-weight: 600;
+.service-modal__list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.service-modal__cta {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+.service-card[data-service] {
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .service-modal__content {
+    padding: 28px 22px 24px;
+    max-width: 95%;
+    border-radius: 16px;
+  }
+  .service-modal__icon { width: 44px; height: 44px; }
+  .service-modal__icon svg { width: 22px; height: 22px; }
+  .service-modal__title { font-size: 1.15rem; }
+  .service-modal__desc { font-size: .84rem; margin-bottom: 14px; }
+  .service-modal__list li { font-size: .82rem; padding: 8px 0; }
 }
 
 /* ========================================
