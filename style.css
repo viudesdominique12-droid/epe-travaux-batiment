@@ -1724,8 +1724,28 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
     grid-template-columns: 1fr;
     gap: 8px;
   }
+  .trust {
+    padding: 16px 0;
+  }
   .trust__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .trust__item {
+    flex-direction: row;
+    gap: 5px;
+    font-size: .7rem;
+    padding: 6px 4px;
+  }
+  .trust__icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .trust__icon svg {
+    width: 14px;
+    height: 14px;
   }
   .form__row {
     grid-template-columns: 1fr;
