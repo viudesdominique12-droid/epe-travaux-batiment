@@ -229,6 +229,17 @@ const formSuccess = document.getElementById('formSuccess');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
+  // Google Ads conversion — form submission
+  // REMPLACER AW-XXXXXXXXXX/YYYYYYY par votre ID de conversion Google Ads
+  if (typeof gtag === 'function') {
+    gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXXX/YYYYYYY' });
+    gtag('event', 'generate_lead', {
+      event_category: 'formulaire',
+      event_label: form.querySelector('#travaux')?.value || 'devis',
+      value: 1
+    });
+  }
+
   // Show success message
   formSuccess.classList.add('show');
 
@@ -280,3 +291,28 @@ if (window.matchMedia('(hover: hover)').matches) {
     });
   });
 }
+
+// --- Google Ads — Phone click tracking ---
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+  link.addEventListener('click', () => {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXXX/ZZZZZZZ' });
+      gtag('event', 'click_to_call', {
+        event_category: 'contact',
+        event_label: link.getAttribute('href')
+      });
+    }
+  });
+});
+
+// --- Google Ads — WhatsApp click tracking ---
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+  link.addEventListener('click', () => {
+    if (typeof gtag === 'function') {
+      gtag('event', 'click_whatsapp', {
+        event_category: 'contact',
+        event_label: 'whatsapp'
+      });
+    }
+  });
+});
