@@ -1,5 +1,5 @@
 /* ========================================
-   E.P.E Travaux Bâtiment — Premium Styles
+   E.P.E Couverture — Premium Styles
    ======================================== */
 
 /* --- Reset & Variables --- */
@@ -370,6 +370,56 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
 .hero__trust span svg {
   color: var(--accent);
   flex-shrink: 0;
+}
+
+/* ========================================
+   URGENCE TOITURE BANNER
+   ======================================== */
+.urgence {
+  background: var(--gradient-accent);
+  padding: 20px 0;
+  color: var(--white);
+}
+.urgence__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.urgence__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.urgence__text h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.urgence__text p {
+  font-size: .88rem;
+  opacity: .9;
+}
+.urgence__btn {
+  background: var(--white) !important;
+  color: var(--accent) !important;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: var(--radius);
+  font-size: .95rem;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.urgence__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
 }
 
 /* ========================================

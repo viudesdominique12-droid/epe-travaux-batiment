@@ -1,5 +1,5 @@
 /* ========================================
-   E.P.E Travaux Bâtiment — Main JS
+   E.P.E Couverture — Main JS
    ======================================== */
 
 import { initHero3D } from './hero-3d.js';
