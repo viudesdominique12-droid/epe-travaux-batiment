@@ -142,10 +142,11 @@ if (carousel) {
   document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
   document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
 
-  // Click on adjacent slides to navigate
+  // Click on adjacent slides to navigate, active slide opens lightbox
   slides.forEach((slide, i) => {
     slide.addEventListener('click', () => {
-      if (i !== current) goTo(i);
+      if (i === current && window.openLightbox) window.openLightbox(i);
+      else if (i !== current) goTo(i);
     });
   });
 
@@ -178,6 +179,50 @@ if (carousel) {
 
   updateCarousel();
   startAuto();
+}
+
+// --- Photo Lightbox ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+if (lightbox) {
+  const allSlideImgs = Array.from(document.querySelectorAll('.carousel3d__slide img'));
+  let lbIndex = 0;
+
+  function openLightbox(idx) {
+    lbIndex = idx;
+    const img = allSlideImgs[idx];
+    if (!img) return;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function lbNav(dir) {
+    lbIndex = ((lbIndex + dir) % allSlideImgs.length + allSlideImgs.length) % allSlideImgs.length;
+    const img = allSlideImgs[lbIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+  }
+
+  lightbox.querySelector('.lightbox__overlay').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox__prev').addEventListener('click', () => lbNav(-1));
+  lightbox.querySelector('.lightbox__next').addEventListener('click', () => lbNav(1));
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  // Expose for carousel
+  window.openLightbox = openLightbox;
 }
 
 // --- Service detail modal ---
