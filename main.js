@@ -105,27 +105,77 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => revealObserver.observe(el));
 
-// --- Gallery filter ---
-const filterButtons = document.querySelectorAll('.gallery__filter');
-const galleryItems = document.querySelectorAll('.gallery__item');
+// --- 3D Coverflow Carousel ---
+const carousel = document.getElementById('carousel3d');
+if (carousel) {
+  const slides = Array.from(carousel.querySelectorAll('.carousel3d__slide'));
+  const counter = document.getElementById('carouselCounter');
+  const total = slides.length;
+  let current = 0;
+  let autoTimer = null;
 
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Update active state
-    filterButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+  function updateCarousel() {
+    slides.forEach((slide, i) => {
+      slide.className = 'carousel3d__slide';
+      slide.removeAttribute('data-pos');
+      const diff = ((i - current) % total + total) % total;
+      const rdiff = diff > total / 2 ? diff - total : diff;
 
-    const filter = btn.dataset.filter;
+      if (rdiff === 0) slide.classList.add('active');
+      else if (rdiff === -1) slide.classList.add('prev');
+      else if (rdiff === 1) slide.classList.add('next');
+      else if (rdiff === -2) slide.classList.add('far-prev');
+      else if (rdiff === 2) slide.classList.add('far-next');
+      // else: stays hidden (opacity: 0 by default)
+    });
+    if (counter) counter.textContent = `${current + 1} / ${total}`;
+  }
 
-    galleryItems.forEach(item => {
-      if (filter === 'all' || item.dataset.cat === filter) {
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
+  function goTo(idx) {
+    current = ((idx % total) + total) % total;
+    updateCarousel();
+  }
+
+  document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+
+  // Click on adjacent slides to navigate
+  slides.forEach((slide, i) => {
+    slide.addEventListener('click', () => {
+      if (i !== current) goTo(i);
     });
   });
-});
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  carousel.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goTo(current + (dx > 0 ? -1 : 1));
+  });
+
+  // Keyboard
+  carousel.setAttribute('tabindex', '0');
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+  // Auto-rotate
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(() => goTo(current + 1), 4000);
+  }
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+  }
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+  carousel.addEventListener('touchstart', stopAuto, { passive: true });
+
+  updateCarousel();
+  startAuto();
+}
 
 // --- Accordion (Detail prestations) ---
 document.querySelectorAll('.accordion-item__header').forEach(header => {

@@ -206,37 +206,46 @@
     <div class="container">
       <span class="section__label reveal">Nos réalisations</span>
       <h2 class="section__title reveal">Nos chantiers <em>récents</em></h2>
-      <p class="section__desc reveal">Découvrez nos réalisations en couverture, ravalement et peinture de façade.</p>
-      <div class="gallery__filters reveal">
-        <button class="gallery__filter active" data-filter="all">Tous</button>
-        <button class="gallery__filter" data-filter="toiture">Toiture</button>
-        <button class="gallery__filter" data-filter="facade">Façade</button>
+      <p class="section__desc reveal">Faites défiler nos réalisations en peinture, façade et rénovation.</p>
+
+      <!-- 3D Coverflow Carousel -->
+      <div class="carousel3d reveal" id="carousel3d">
+        <div class="carousel3d__viewport">
+          <div class="carousel3d__track" id="carouselTrack">
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/salon-olive.jpeg" alt="Peinture murale vert olive — salon cathédrale" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Salon — Mur vert olive</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/interieur-poutres.jpeg" alt="Salon avec poutres apparentes et cheminée" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Salon — Poutres apparentes</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/cuisine-verte.jpeg" alt="Cuisine repeinte en vert sauge" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Cuisine — Vert sauge</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/salon-parquet.jpeg" alt="Salon parquet et boiseries peintes" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Salon — Parquet & boiseries</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/salon-vert.jpeg" alt="Peinture mur accent vert d'eau" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Salon — Mur vert d'eau</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/chambre-taupe.jpeg" alt="Chambre mur taupe et sol bois" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Chambre — Mur taupe</p></div></div>
+            <div class="carousel3d__slide" data-cat="exterieur"><img src="./images/facade-echafaudage.jpeg" alt="Ravalement de façade avec échafaudage" loading="lazy" /><div class="carousel3d__caption"><span>Extérieur</span><p>Ravalement de façade</p></div></div>
+            <div class="carousel3d__slide" data-cat="exterieur"><img src="./images/toiture-apres.jpeg" alt="Toiture rénovée — après travaux" loading="lazy" /><div class="carousel3d__caption"><span>Extérieur</span><p>Toiture — Après</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/chambre-grise.jpeg" alt="Chambre peinte gris moderne" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Chambre — Gris moderne</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/couloir-fini.jpeg" alt="Grand couloir peint blanc — résultat final" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Couloir — Résultat fini</p></div></div>
+            <div class="carousel3d__slide" data-cat="exterieur"><img src="./images/facade-maison.jpeg" alt="Peinture de façade maison" loading="lazy" /><div class="carousel3d__caption"><span>Extérieur</span><p>Façade — Maison</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/chambre-sol.jpeg" alt="Chambre rénovée — sol et murs" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Chambre — Rénovation complète</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/volets-peints.jpeg" alt="Volets et portes peints en blanc" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Volets — Peinture</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/mur-blanc-fini.jpeg" alt="Mur blanc impeccable — résultat final" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Mur blanc — Fini</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/peinture-pistolet.jpeg" alt="Peinture au pistolet airless" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Peinture au pistolet</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/preparation-chantier.jpeg" alt="Préparation de chantier — protection" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Préparation chantier</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/chantier-placo.jpeg" alt="Chantier placo — enduit et ponçage" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Placo — Enduit</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/chantier-neuf.jpeg" alt="Chantier neuf — peinture complète" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Construction neuve</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/chantier-ponçage.jpeg" alt="Ponçage et préparation des murs" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Ponçage murs</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/chantier-placo2.jpeg" alt="Chantier placo — grande surface" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Placo — Grande surface</p></div></div>
+            <div class="carousel3d__slide" data-cat="chantier"><img src="./images/mur-enduit.jpeg" alt="Mur en cours d'enduisage" loading="lazy" /><div class="carousel3d__caption"><span>Chantier</span><p>Enduit mural</p></div></div>
+            <div class="carousel3d__slide" data-cat="interieur"><img src="./images/salle-bain.jpeg" alt="Salle de bain — plafond et murs peints" loading="lazy" /><div class="carousel3d__caption"><span>Intérieur</span><p>Salle de bain</p></div></div>
+            <div class="carousel3d__slide" data-cat="exterieur"><img src="./images/toiture-avant.jpeg" alt="Toiture avant rénovation" loading="lazy" /><div class="carousel3d__caption"><span>Extérieur</span><p>Toiture — Avant</p></div></div>
+          </div>
+        </div>
+        <button class="carousel3d__btn carousel3d__btn--prev" id="carouselPrev" aria-label="Photo précédente"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="carousel3d__btn carousel3d__btn--next" id="carouselNext" aria-label="Photo suivante"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="carousel3d__counter" id="carouselCounter">1 / 23</div>
       </div>
-      <div class="gallery__grid">
-        <div class="gallery__item reveal" data-cat="facade">
-          <img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/c0/71/bd/c071bd92e7c95e59e9c78b4190f7e90dd561cd7f.jpg?rule=ad-large" alt="Ravalement façade — Castelsarrasin" loading="lazy" />
-          <div class="gallery__overlay"><span class="gallery__cat">Façade</span><h4>Ravalement de façade</h4><p>Castelsarrasin</p></div>
-        </div>
-        <div class="gallery__item reveal" data-cat="facade">
-          <img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/4e/8a/10/4e8a101d87d4314633dcfe9cac47be895361ab78.jpg?rule=ad-large" alt="Peinture façade — Moissac" loading="lazy" />
-          <div class="gallery__overlay"><span class="gallery__cat">Façade</span><h4>Peinture de façade</h4><p>Moissac</p></div>
-        </div>
-        <div class="gallery__item reveal" data-cat="toiture">
-          <img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/1e/84/9a/1e849a82311152edece066a7d9d4a5283d33aebe.jpg?rule=ad-large" alt="Rénovation toiture — Montauban" loading="lazy" />
-          <div class="gallery__overlay"><span class="gallery__cat">Toiture</span><h4>Rénovation de toiture</h4><p>Montauban</p></div>
-        </div>
-        <div class="gallery__item reveal" data-cat="toiture">
-          <img src="https://images.unsplash.com/photo-1670351594472-8535f908d2d1?w=800&q=80" alt="Couverture neuve — Castelsarrasin" loading="lazy" />
-          <div class="gallery__overlay"><span class="gallery__cat">Toiture</span><h4>Couverture neuve</h4><p>Castelsarrasin</p></div>
-        </div>
-        <div class="gallery__item reveal" data-cat="toiture">
-          <img src="https://images.unsplash.com/photo-1638953599960-2b78db4b0c41?w=800&q=80" alt="Réparation charpente — Auch" loading="lazy" />
-          <div class="gallery__overlay"><span class="gallery__cat">Toiture</span><h4>Réparation de charpente</h4><p>Auch</p></div>
-        </div>
-        <div class="gallery__item reveal" data-cat="facade">
-          <img src="https://images.unsplash.com/photo-1500464592476-da95b9166296?w=800&q=80" alt="Ravalement façade — maison en pierre" loading="lazy" />
-          <div class="gallery__overlay"><span class="gallery__cat">Façade</span><h4>Ravalement — maison en pierre</h4><p>Moissac</p></div>
-        </div>
+
+      <!-- Video -->
+      <div class="gallery__video reveal">
+        <h3>Aperçu d'un chantier en cours</h3>
+        <video src="./images/video-chantier.mp4" controls preload="metadata" playsinline></video>
       </div>
     </div>
   </section>
@@ -384,7 +393,7 @@
     <div class="container">
       <div class="about__grid">
         <div class="about__image reveal--left">
-          <img src="https://images.unsplash.com/photo-1670351594472-8535f908d2d1?w=800&q=80" alt="Équipe E.P.E Couverture" loading="lazy" />
+          <img src="./images/facade-echafaudage.jpeg" alt="Équipe E.P.E Couverture — chantier façade" loading="lazy" />
         </div>
         <div class="about__content reveal--right">
           <span class="section__label">À propos</span>
