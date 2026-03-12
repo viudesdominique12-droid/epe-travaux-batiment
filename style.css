@@ -1603,11 +1603,61 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
   .carousel3d__btn { width: 40px; height: 40px; }
   .carousel3d__btn--prev { left: 4px; }
   .carousel3d__btn--next { right: 4px; }
-  .engagements__grid {
-    grid-template-columns: 1fr;
+  /* Compact cards on mobile */
+  .services { padding: 44px 0; }
+  .engagements { padding: 44px 0; }
+  .method { padding: 44px 0; }
+  .reviews { padding: 44px 0; }
+  .detail { padding: 44px 0; }
+  .faq { padding: 44px 0; }
+  .about { padding: 44px 0; }
+  .section__title { font-size: 1.3rem; margin-bottom: 12px; }
+  .section__desc { margin-top: -4px; margin-bottom: 16px; font-size: .82rem; }
+  .service-card {
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    row-gap: 1px;
   }
+  .service-card h3 { font-size: .82rem; margin-bottom: 0; }
+  .service-card p {
+    font-size: .72rem; line-height: 1.35; grid-column: 2;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .service-card__icon {
+    width: 30px; height: 30px; border-radius: 8px; margin-bottom: 0;
+    grid-row: 1 / -1;
+  }
+  .service-card__icon svg { width: 15px; height: 15px; }
+  .services__grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  /* Engagement cards — compact icon+title grid */
+  .engagement-card {
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .engagement-card__icon {
+    width: 28px; height: 28px; min-width: 28px;
+    border-radius: 7px; margin-bottom: 0;
+  }
+  .engagement-card__icon svg { width: 14px; height: 14px; }
+  .engagement-card h3 { font-size: .8rem; margin-bottom: 0; }
+  .engagement-card p { display: none; }
+  .engagements__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .review-card { padding: 14px; min-height: auto; }
+  .review-card__text { font-size: .8rem; margin-bottom: 6px; line-height: 1.4; }
+  .review-card__stars { margin-bottom: 4px; }
+  .review-card__author { font-size: .78rem; }
   .reviews__grid {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
   .trust__grid {
     grid-template-columns: repeat(2, 1fr);
