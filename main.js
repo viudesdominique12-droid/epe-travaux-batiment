@@ -10,6 +10,7 @@ initHero3D();
 // --- Header scroll effect ---
 const header = document.getElementById('header');
 const stickyCta = document.getElementById('stickyCta');
+const colorPalette = document.getElementById('colorPalette');
 
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
@@ -21,11 +22,13 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scrolled');
   }
 
-  // Sticky CTA visibility
+  // Sticky CTA + Palette visibility
   if (scrollY > 600) {
     stickyCta.classList.add('visible');
+    if (colorPalette) colorPalette.classList.add('visible');
   } else {
     stickyCta.classList.remove('visible');
+    if (colorPalette) colorPalette.classList.remove('visible');
   }
 
   // Active nav link
@@ -80,7 +83,7 @@ burger.addEventListener('click', () => {
 });
 
 // --- Scroll reveal (Intersection Observer) ---
-const revealElements = document.querySelectorAll('.reveal, .reveal--left, .reveal--right, .reveal--scale, .paint-drip');
+const revealElements = document.querySelectorAll('.reveal, .reveal--left, .reveal--right, .reveal--scale, .paint-drip, .paint-splash');
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

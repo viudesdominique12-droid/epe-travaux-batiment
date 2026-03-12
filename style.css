@@ -1382,10 +1382,128 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
 .paint-drip svg path:nth-child(3) { transition-delay: 0.2s; }
 
 /* ========================================
+   PAINT SPLASHES
+   ======================================== */
+.services,
+.gallery,
+.method,
+.engagements,
+.about,
+.faq {
+  position: relative;
+  overflow: hidden;
+}
+
+.paint-splash {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transform: scale(.6) rotate(-8deg);
+  transition: opacity 1.2s cubic-bezier(.4,0,.2,1), transform 1.2s cubic-bezier(.34,1.56,.64,1);
+}
+.paint-splash.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Position each splash */
+.paint-splash--1 { width: 280px; top: 20px; right: -40px; }
+.paint-splash--2 { width: 260px; top: 40px; left: -50px; }
+.paint-splash--3 { width: 240px; bottom: 20px; right: -30px; }
+.paint-splash--4 { width: 270px; top: 30px; left: -40px; }
+.paint-splash--5 { width: 230px; bottom: 40px; right: -30px; }
+.paint-splash--6 { width: 220px; bottom: 30px; left: -20px; }
+
+/* ========================================
+   FLOATING COLOR PALETTE
+   ======================================== */
+.color-palette {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 10px;
+  background: rgba(255,251,247,.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 100px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
+  border: 1px solid rgba(232,224,214,.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease, transform .5s ease;
+}
+.color-palette.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.color-palette__dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--dot-color);
+  cursor: pointer;
+  position: relative;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+  animation: palettePulse 3s ease-in-out infinite;
+}
+.color-palette__dot:nth-child(1) { animation-delay: 0s; }
+.color-palette__dot:nth-child(2) { animation-delay: 0.6s; }
+.color-palette__dot:nth-child(3) { animation-delay: 1.2s; }
+.color-palette__dot:nth-child(4) { animation-delay: 1.8s; }
+.color-palette__dot:nth-child(5) { animation-delay: 2.4s; }
+
+.color-palette__dot:hover {
+  transform: scale(1.35);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--dot-color) 50%, transparent);
+}
+
+/* Tooltip */
+.color-palette__dot::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  background: var(--charcoal);
+  color: var(--white);
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.color-palette__dot:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@keyframes palettePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--dot-color) 30%, transparent); }
+  50% { transform: scale(1.1); box-shadow: 0 0 8px 2px color-mix(in srgb, var(--dot-color) 20%, transparent); }
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 @media (max-width: 900px) {
   .paint-drip svg { height: 22px; }
+  .paint-splash { width: 180px !important; opacity: .7; }
+  .paint-splash--1 { right: -60px; }
+  .paint-splash--2 { left: -70px; }
+  .paint-splash--3 { right: -50px; }
+  .paint-splash--4 { left: -60px; }
+  .paint-splash--5 { right: -50px; }
+  .paint-splash--6 { left: -40px; }
   .hero {
     padding: 120px 0 60px;
     min-height: auto;
@@ -1463,6 +1581,10 @@ input, select, textarea { font-family: inherit; font-size: 1rem; }
 
 @media (max-width: 600px) {
   .paint-drip svg { height: 16px; }
+  .paint-splash { width: 140px !important; }
+  .color-palette { left: 8px; gap: 10px; padding: 10px 7px; }
+  .color-palette__dot { width: 14px; height: 14px; }
+  .color-palette__dot::after { display: none; }
   .hero__title {
     font-size: 1.8rem;
   }
