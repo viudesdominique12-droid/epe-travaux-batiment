@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /dist/
-
-Sitemap: https://epe-couverture.fr/sitemap.xml
