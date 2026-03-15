@@ -1699,9 +1699,7 @@ a.review-card:hover .review-card__google {
 @media (max-width: 600px) {
   .paint-drip svg { height: 16px; }
   .paint-splash { width: 140px !important; }
-  .color-palette { left: 8px; gap: 10px; padding: 10px 7px; }
-  .color-palette__dot { width: 14px; height: 14px; }
-  .color-palette__dot::after { display: none; }
+  .color-palette { display: none !important; }
   .hero__title {
     font-size: 1.8rem;
   }
